@@ -4,6 +4,7 @@ import {BuildOptions} from "./types/config";
 export function buildDevServer(options: BuildOptions): WebpackDevServer.Configuration {
     return options.isDev ? {
         port: options.port,
-        open: true
+        open: true,
+        historyApiFallback: true,
     } : undefined
 }
