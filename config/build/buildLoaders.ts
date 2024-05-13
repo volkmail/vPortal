@@ -30,8 +30,24 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         ],
     };
 
+    const svgLoader: webpack.RuleSetRule = {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    };
+
+    const fileLoader: webpack.RuleSetRule = {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+    };
+
     return [
+        svgLoader,
+        fileLoader,
         typescriptLoader,
-        cssLoader
+        cssLoader,
     ]
 }
