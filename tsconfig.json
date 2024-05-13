@@ -31,6 +31,10 @@
             "*": ["./src/*"]
         }
     },
+    "exclude": [
+        "./build/**/*",
+        "./node_modules/**/*"
+    ],
     "ts-node": {
         "compilerOptions": {
             "module": "CommonJS"
