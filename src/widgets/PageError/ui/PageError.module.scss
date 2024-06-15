@@ -1,0 +1,12 @@
+.PageError{
+    width: 100svw;
+    height: 100svh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        margin-right: 10px;
+    }
+}
