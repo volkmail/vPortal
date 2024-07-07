@@ -7,7 +7,8 @@
     "build:dev": "webpack --env mode=development",
     "start": "webpack serve --env port=3000",
     "lint": "eslint \"**/*.{ts,tsx}\" --quiet",
-    "lint:fix": "eslint \"**/*.{ts,tsx}\" --quiet --fix"
+    "lint:fix": "eslint \"**/*.{ts,tsx}\" --quiet --fix",
+    "unit": "jest --config ./config/jest/jest.config.ts"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,11 @@
   "author": "Volkov Aleksey",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "7.17.5",
+    "@babel/preset-env": "7.16.11",
+    "@babel/preset-typescript": "7.16.7",
     "@svgr/webpack": "6.2.1",
+    "@types/jest": "29.5.12",
     "@types/node": "17.0.21",
     "@types/react": "17.0.39",
     "@types/react-dom": "17.0.11",
@@ -30,6 +35,8 @@
     "@types/webpack-dev-server": "4.7.2",
     "@typescript-eslint/eslint-plugin": "5.12.1",
     "@typescript-eslint/parser": "5.12.1",
+    "babel-loader": "8.2.3",
+    "babel-plugin-i18next-extract": "0.8.3",
     "css-loader": "6.6.0",
     "eslint": "8.10.0",
     "eslint-config-airbnb": "19.0.4",
@@ -42,6 +49,7 @@
     "file-loader": "6.2.0",
     "globals": "15.3.0",
     "html-webpack-plugin": "5.5.0",
+    "jest": "^27.5.1",
     "mini-css-extract-plugin": "2.5.3",
     "prettier": "3.2.5",
     "sass": "1.49.9",
