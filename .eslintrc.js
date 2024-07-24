@@ -7,12 +7,7 @@ module.exports = {
   globals: {
     __IS_DEV__: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-    'plugin:i18next/recommended',
-    'prettier',
-  ],
+  extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended', 'prettier', 'plugin:storybook/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -41,7 +36,7 @@ module.exports = {
       'error',
       {
         markupOnly: true,
-        ignoreAttribute: ['data-testid'],
+        ignoreAttribute: ['data-testid', 'to', 'fallback'],
       },
     ],
   },
