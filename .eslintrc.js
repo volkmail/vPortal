@@ -7,7 +7,12 @@ module.exports = {
   globals: {
     __IS_DEV__: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended', 'prettier', 'plugin:storybook/recommended'],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'plugin:i18next/recommended',
+    'prettier',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {

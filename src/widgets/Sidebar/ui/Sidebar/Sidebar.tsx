@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button } from 'shared/ui/Button';
+import { useTranslation } from 'react-i18next';
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -12,6 +13,7 @@ interface SidebarProps {
 export const Sidebar = (props: SidebarProps) => {
   const { className } = props;
   const [collapsed, setCollapsed] = useState(false);
+  const { t } = useTranslation();
 
   const onToggle = () => setCollapsed((prevState) => !prevState);
 
@@ -27,7 +29,7 @@ export const Sidebar = (props: SidebarProps) => {
         type='button'
         onClick={onToggle}
       >
-        toggle
+        {t('Переключить')}
       </Button>
       <div className={styles.switchers}>
         <ThemeSwitcher />
