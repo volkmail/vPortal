@@ -21,7 +21,13 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'i18next', 'prettier'],
+  plugins: [
+    '@typescript-eslint',
+    'i18next',
+    'prettier',
+    'react',
+    'react-hooks',
+  ],
   rules: {
     'prettier/prettier': 'error',
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
@@ -38,12 +44,18 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
     'i18next/no-literal-string': [
-      'error',
+      'warn',
       {
         markupOnly: true,
         ignoreAttribute: ['data-testid', 'to', 'fallback'],
       },
     ],
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'warn',
+    // Checks effect dependencies,
   },
   overrides: [
     {
