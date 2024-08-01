@@ -1,7 +1,6 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Portal } from 'shared/ui/Portal';
-import { useTheme } from 'app/providers/ThemeProvider';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
@@ -15,14 +14,10 @@ const ANIMATION_DELAY = 150;
 const Modal: FC<ModalProps> = (props) => {
   const [isClosing, setIsClosing] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
-  // !!! Это будет изменяться, так делать НЕ ПРАВИЛЬНО!!!
-  const { theme } = useTheme();
 
   const mods: Record<string, boolean> = {
     [styles.isOpen]: props.isOpen,
     [styles.isClosing]: isClosing,
-    // !!! Это будет изменяться, так делать НЕ ПРАВИЛЬНО!!!
-    [styles[theme]]: true,
   };
 
   const onCloseHandler = useCallback(() => {

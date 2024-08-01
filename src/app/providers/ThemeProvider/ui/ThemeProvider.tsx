@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from 'react';
+import { FC, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import {
   LOCAL_STORAGE_THEME_KEY,
   Theme,
@@ -9,6 +9,10 @@ export const ThemeProvider: FC = (props) => {
   const [theme, setTheme] = useState<Theme>(
     (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) ?? Theme.LIGHT) as Theme,
   );
+
+  useLayoutEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
   const toggleTheme = () =>
     setTheme((prevTheme) =>
