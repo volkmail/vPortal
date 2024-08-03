@@ -7,12 +7,14 @@ interface ModalProps {
   className?: string;
   isOpen?: boolean;
   onClose?: () => void;
+  lazy?: boolean;
 }
 
 const ANIMATION_DELAY = 150;
 
 const Modal: FC<ModalProps> = (props) => {
   const [isClosing, setIsClosing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   const mods: Record<string, boolean> = {
@@ -50,9 +52,19 @@ const Modal: FC<ModalProps> = (props) => {
     };
   }, [props.isOpen, onKeyDownHandler]);
 
+  useEffect(() => {
+    if (props.isOpen) {
+      setIsMounted(true);
+    }
+  }, [props.isOpen]);
+
   const onContentClickHandler = (evt: React.MouseEvent<HTMLDivElement>) => {
     evt.stopPropagation();
   };
+
+  if (props.lazy && !isMounted) {
+    return null;
+  }
 
   return (
     <Portal>
