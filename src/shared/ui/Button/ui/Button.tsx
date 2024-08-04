@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import styles from './Button.module.scss';
 
@@ -24,14 +24,16 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme;
   square?: boolean;
   size?: ButtonSize;
+  disabled?: boolean;
 }
 
-const Button: FC<ButtonProps> = (props) => {
+const Button = (props: ButtonProps) => {
   const {
     className,
     children,
     theme,
     square,
+    disabled,
     size = ButtonSize.M,
     ...otherProps
   } = props;
@@ -40,12 +42,14 @@ const Button: FC<ButtonProps> = (props) => {
     [styles[theme]]: true,
     [styles.square]: square,
     [styles[size]]: true,
+    [styles.disabled]: disabled,
   };
 
   return (
     <button
       type='button'
       className={classNames(styles.Button, mods, [className])}
+      disabled={disabled}
       {...otherProps}
     >
       {children}

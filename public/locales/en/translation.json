@@ -3,5 +3,10 @@
     "Короткий язык": "RU",
     "Страница не найдена": "Page not found",
     "Произошла непредвиденная ошибка": "Critical error occured",
-    "Обновить страницу": "Reload page"
+    "Обновить страницу": "Reload page",
+    "Ошибка": "Error",
+    "Логин": "Login",
+    "Пароль": "Password",
+    "Форма авторизации": "Authorization form",
+    "Введен неверный логин или пароль": "Incorrect Login or Password"
 }
