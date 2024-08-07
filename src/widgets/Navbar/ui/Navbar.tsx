@@ -51,7 +51,9 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
       >
         {t('Войти')}
       </Button>
-      <LoginModal isOpen={isModalOpen} onClose={onToggleModalHandler} />
+      {isModalOpen && (
+        <LoginModal isOpen={isModalOpen} onClose={onToggleModalHandler} />
+      )}
     </nav>
   );
 };

@@ -5,14 +5,22 @@ import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Input } from 'shared/ui/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { Text, TextTheme } from 'shared/ui/Text';
+import {
+  DynamicModuleLoader,
+  ReducersList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { getLoginState } from '../../model/selectors/getLoginState/getLoginState';
-import { loginActions } from '../../model/slice/loginSlice';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import styles from './LoginForm.module.scss';
 
-interface LoginFormProps {
+export interface LoginFormProps {
   className?: string;
 }
+
+const loginFormReducers: ReducersList = {
+  loginForm: loginReducer,
+};
 
 const LoginForm = memo((props: LoginFormProps) => {
   const { username, password, isLoading, error } = useSelector(getLoginState);
@@ -39,36 +47,38 @@ const LoginForm = memo((props: LoginFormProps) => {
   };
 
   return (
-    <div className={classNames(styles.LoginForm, {}, [props.className])}>
-      <Text title={t('Форма авторизации')} />
-      {error && (
-        <Text title={t('Ошибка')} text={error} theme={TextTheme.ERROR} />
-      )}
-      <Input
-        value={username}
-        type='text'
-        className={styles.input}
-        placeholder={t('Логин')}
-        onChange={onChangeUsernameHandler}
-        autofocus
-      />
-      <Input
-        value={password}
-        type='text'
-        className={styles.input}
-        placeholder={t('Пароль')}
-        onChange={onChangePasswordHandler}
-      />
-      <Button
-        className={styles.loginBtn}
-        theme={ButtonTheme.OUTLINE}
-        onClick={onLoginButtonClickHandler}
-        disabled={isLoading}
-      >
-        {t('Войти')}
-      </Button>
-    </div>
+    <DynamicModuleLoader reducers={loginFormReducers} removeAfterUnmount>
+      <div className={classNames(styles.LoginForm, {}, [props.className])}>
+        <Text title={t('Форма авторизации')} />
+        {error && (
+          <Text title={t('Ошибка')} text={error} theme={TextTheme.ERROR} />
+        )}
+        <Input
+          value={username}
+          type='text'
+          className={styles.input}
+          placeholder={t('Логин')}
+          onChange={onChangeUsernameHandler}
+          autofocus
+        />
+        <Input
+          value={password}
+          type='text'
+          className={styles.input}
+          placeholder={t('Пароль')}
+          onChange={onChangePasswordHandler}
+        />
+        <Button
+          className={styles.loginBtn}
+          theme={ButtonTheme.OUTLINE}
+          onClick={onLoginButtonClickHandler}
+          disabled={isLoading}
+        >
+          {t('Войти')}
+        </Button>
+      </div>
+    </DynamicModuleLoader>
   );
 });
 
-export { LoginForm };
+export default LoginForm;

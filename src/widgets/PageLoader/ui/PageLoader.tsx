@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Loader } from 'shared/ui/Loader';
 import styles from './PageLoader.module.scss';
 
 interface PageLoaderProps {
@@ -8,12 +9,7 @@ interface PageLoaderProps {
 
 const PageLoader: FC<PageLoaderProps> = (props) => (
   <div className={classNames(styles.PageLoader, {}, [props.className])}>
-    <div className={classNames(styles.ldsEllipsis, {}, [])}>
-      <div />
-      <div />
-      <div />
-      <div />
-    </div>
+    <Loader />
   </div>
 );
 
