@@ -3,7 +3,7 @@ import { Country, Currency } from 'shared/consts/common';
 export interface Profile {
   id?: string;
   first?: string;
-  lastname?: string;
+  lastName?: string;
   age?: number;
   currency?: Currency;
   country?: Country;
